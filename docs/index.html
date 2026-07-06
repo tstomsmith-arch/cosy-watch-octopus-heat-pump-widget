@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cosy Watch — Octopus Cosy Heat Pump iPhone Widget</title>
+  <meta name="description" content="Cosy Watch is an unofficial Scriptable iPhone widget for Octopus Cosy heat pumps. See pump status, hot water temperature, COP, pod temperatures, humidity and fault alerts on your Home Screen.">
+  <style>
+    :root {
+      --bg1: #10002e;
+      --bg2: #22084f;
+      --bg3: #3a0f6b;
+      --pink: #f050f8;
+      --cyan: #5ce1e6;
+      --amber: #ffb020;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,.72);
+      --faint: rgba(255,255,255,.48);
+      --card: rgba(255,255,255,.10);
+      --border: rgba(255,255,255,.25);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top right, #49136f 0, var(--bg2) 34%, var(--bg1) 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 72px 0 44px; }
+    .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px; align-items: center; }
+    .eyebrow { color: var(--cyan); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
+    h1 { font-size: clamp(40px, 7vw, 74px); line-height: .95; margin: 12px 0 18px; }
+    .lead { color: var(--muted); font-size: 20px; max-width: 650px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-block; padding: 13px 18px; border-radius: 999px; text-decoration: none; font-weight: 700; }
+    .btn.primary { background: linear-gradient(90deg, var(--pink), var(--cyan)); color: #10002e; }
+    .btn.secondary { border: 1px solid var(--border); background: rgba(255,255,255,.08); }
+    .mock {
+      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.05));
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 22px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    }
+    .widget {
+      border-radius: 30px;
+      padding: 24px;
+      background: linear-gradient(135deg, #10002e, #2b0a58 55%, #4a1170);
+      min-height: 230px;
+    }
+    .widget-title { text-align: center; color: var(--faint); font-weight: 800; font-size: 13px; letter-spacing: .08em; margin-bottom: 18px; }
+    .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .tile { border: 1px solid var(--border); background: rgba(255,255,255,.10); border-radius: 24px; padding: 16px; min-height: 140px; }
+    .tile h3 { margin: 0 0 14px; color: var(--faint); font-size: 13px; }
+    .big { font-size: 38px; font-weight: 800; line-height: 1; }
+    .sub { color: var(--muted); font-size: 14px; margin-top: 8px; }
+    section { padding: 44px 0; }
+    h2 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 18px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 22px; }
+    .card h3 { margin-top: 0; }
+    .card p, li { color: var(--muted); }
+    .steps { counter-reset: step; display: grid; gap: 12px; }
+    .step { display: grid; grid-template-columns: 42px 1fr; gap: 14px; align-items: start; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 16px; }
+    .step:before { counter-increment: step; content: counter(step); width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; color: #10002e; font-weight: 800; background: var(--cyan); }
+    .notice { border-left: 4px solid var(--amber); background: rgba(255,176,32,.12); padding: 16px 18px; border-radius: 14px; color: var(--muted); }
+    footer { padding: 40px 0 60px; color: var(--faint); }
+    @media (max-width: 850px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+      .tiles { grid-template-columns: 1fr; }
+      header { padding-top: 42px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Unofficial Scriptable widget</div>
+        <h1>Cosy Watch for Octopus Cosy heat pumps</h1>
+        <p class="lead">See your heat pump status, hot water temperature, COP, pod temperatures, humidity and fault alerts from your iPhone Home Screen.</p>
+        <div class="actions">
+          <a class="btn primary" href="../src/cosy-watch.js">View script</a>
+          <a class="btn secondary" href="../README.md">Read setup guide</a>
+        </div>
+      </div>
+      <div class="mock" aria-label="Widget preview">
+        <div class="widget">
+          <div class="widget-title">OCTOPUS COSY</div>
+          <div class="tiles">
+            <div class="tile"><h3>PUMP</h3><div class="big">Running</div><div class="sub">2.4 kW · COP 3.8</div></div>
+            <div class="tile"><h3>WATER</h3><div class="big">47.2°</div><div class="sub">Schedule</div></div>
+            <div class="tile"><h3>HEATING</h3><div class="big">20.9°</div><div class="sub">4 pods · 19.8°–22.1°</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>What it shows</h2>
+        <div class="grid">
+          <div class="card"><h3>Pump status</h3><p>Quickly see whether the heat pump is standby, running, heating water, offline or reporting a fault.</p></div>
+          <div class="card"><h3>Hot water</h3><p>See current hot water cylinder temperature and water mode where data is available.</p></div>
+          <div class="card"><h3>Cosy Pods</h3><p>Shows pod temperatures, average room temperature, temperature range and average humidity.</p></div>
+          <div class="card"><h3>Performance</h3><p>Displays power, heat output, COP and energy use where the Octopus API returns those values.</p></div>
+          <div class="card"><h3>Fault alerts</h3><p>Faults are highlighted in amber so they stand out from normal running states.</p></div>
+          <div class="card"><h3>Fallback data</h3><p>If a refresh fails, the widget can show the last saved readings rather than going blank.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Install guide</h2>
+        <div class="steps">
+          <div class="step"><div><strong>Install Scriptable</strong><br>Download Scriptable from the App Store on your iPhone.</div></div>
+          <div class="step"><div><strong>Get your Octopus API key</strong><br>Copy your API key from your Octopus account. Keep it private.</div></div>
+          <div class="step"><div><strong>Create a script</strong><br>Paste the Cosy Watch script into a new Scriptable script.</div></div>
+          <div class="step"><div><strong>Add your API key</strong><br>Replace the placeholder API key with your own key on your device.</div></div>
+          <div class="step"><div><strong>Add the widget</strong><br>Add a medium Scriptable widget to your Home Screen and choose the saved script.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="notice"><strong>Security note:</strong> never share your Octopus API key and never upload a copy of the script with your real key included.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Cosy Watch is an unofficial community project and is not affiliated with Octopus Energy.</div>
+  </footer>
+</body>
+</html>
