@@ -29,21 +29,19 @@ This is an unofficial community project and is not affiliated with Octopus Energ
 
 ## Screenshots
 
-### Normal Standby
+<p align="center">
+  <img src="screenshots/normal-standby.jpeg" alt="Normal Standby" width="340">
+  <img src="screenshots/heating-active.jpeg" alt="Heating Active" width="340">
+</p>
 
-screenshots/normal-standby.jpeg
+<p align="center">
+  <img src="screenshots/water-heating.jpeg" alt="Water Heating" width="340">
+  <img src="screenshots/fault-state.jpeg" alt="Fault State" width="340">
+</p>
 
-### Heating Active
-
-!Heating Active
-
-### Water Heating
-
-screenshots/water-heating.jpeg
-
-### Fault State
-
-screenshots/fault-state.jpeg
+<p align="center">
+  <em>Left to right: Normal Standby • Heating Active • Water Heating • Fault State</em>
+</p>
 
 ## Requirements
 
