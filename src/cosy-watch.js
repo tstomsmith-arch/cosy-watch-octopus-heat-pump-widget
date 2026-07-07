@@ -68,6 +68,14 @@ const TAP_URL = "https://octopus.energy/dashboard/";
 // code. Set back to false for normal use.
 const TEST_FAULT = false;
 
+// Set to true to fake water heating (shows the pink "Heating"
+// label on the water tile and "Running" on the pump).
+const TEST_WATER_HEATING = false;
+
+// Set to true to fake central heating (shows "Heating" on the
+// heating tile and "Running" on the pump).
+const TEST_CENTRAL_HEATING = false;
+
 // Sensor readings below this are unplugged probes, not real temps
 const MIN_VALID_TEMP = -50;
 
@@ -769,15 +777,15 @@ function buildMediumWidget(r) {
   waterCard.size = new Size(tileW, 104);
 
   cardHeader(waterCard, "drop.fill", "WATER", CYAN);
-  waterCard.addSpacer();
+  // Fixed top spacer pins the number's height, so it lines up
+  // with the heating tile regardless of lines below.
+  waterCard.addSpacer(r.waterActive ? 6 : 19);
 
-  // Pink "Heating" line shows when water is actively heating
   if (r.waterActive) {
     const heatingLbl = waterCard.addText("Heating");
     heatingLbl.font = Font.semiboldSystemFont(10);
     heatingLbl.textColor = PINK;
     heatingLbl.lineLimit = 1;
-    waterCard.addSpacer(1);
   }
 
   const bigTemp = waterCard.addText(fmtTemp(r.water ? r.water.temp : null));
@@ -832,14 +840,13 @@ function buildMediumWidget(r) {
   } else if (r.pods.length === 1) {
     const pod = r.pods[0];
     cardHeader(podCard, HEATING_ICON, "HEATING", PINK);
-    podCard.addSpacer();
+    podCard.addSpacer(r.heatActive ? 6 : 19);
 
     if (r.heatActive) {
       const heatingLbl = podCard.addText("Heating");
       heatingLbl.font = Font.semiboldSystemFont(10);
       heatingLbl.textColor = PINK;
       heatingLbl.lineLimit = 1;
-      podCard.addSpacer(1);
     }
 
     const podTemp = podCard.addText(fmtTemp(pod.temp));
@@ -892,15 +899,14 @@ function buildMediumWidget(r) {
       : null;
 
     cardHeader(podCard, HEATING_ICON, "HEATING", PINK);
-    podCard.addSpacer();
+    // Same fixed top spacer as the water tile, so the numbers
+    // sit at the same height.
+    podCard.addSpacer(r.heatActive ? 6 : 19);
     if (r.heatActive) {
       const heatingLbl = podCard.addText("Heating");
       heatingLbl.font = Font.semiboldSystemFont(10);
       heatingLbl.textColor = PINK;
       heatingLbl.lineLimit = 1;
-      podCard.addSpacer(1);
-    } else {
-      podCard.addSpacer(8);
     }
 
     const avgTemp = podCard.addText(fmtTemp(avg));
@@ -1114,7 +1120,11 @@ if (API_KEY.includes("PASTE_YOUR")) {
         { name: podName(3), temp: 22.1, humidity: 49, online: true },
         { name: podName(4), temp: 20.3, humidity: 57, online: true }
       ];
-      // Also preview the pump's heating state
+    }
+    if (TEST_WATER_HEATING) {
+      readings.waterActive = true;
+    }
+    if (TEST_CENTRAL_HEATING) {
       readings.heatActive = true;
     }
 
