@@ -1,5 +1,11 @@
 # Cosy Watch
 
+![GitHub Release] (https://img.shields.io/github/v/release/tstomsmith-arch/cosy-watch-octopus-heat-pump-widget)
+
+![GitHub Stars] (https://img.shields.io/github/stars/tstomsmith-arch/cosy-watch-octopus-heat-pump-widge)
+
+![GitHub License] (https://img.shields.io/github/license/tstomsmith-arch/cosy-watch-octopus-heat-pump-widget)
+
 An iPhone Scriptable widget for Octopus Cosy heat pumps.
 
 Cosy Watch displays key heat pump information directly on your iPhone Home Screen, allowing you to monitor system performance without opening the Octopus app.
