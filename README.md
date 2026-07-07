@@ -1,10 +1,8 @@
 # Cosy Watch
 
-![GitHub Release] (https://img.shields.io/github/v/release/tstomsmith-arch/cosy-watch-octopus-heat-pump-widget)
+![GitHub Release](https://img.shields.io/github/v/release/tstomsmith-arch/cosy-watch-octopus-heat-pump-widget) ![GitHub License](https://img.shields.io/github/license/tstomsmith-arch/cosy-watch-octopus-heat-pump-widget)
 
-![GitHub Stars] (https://img.shields.io/github/stars/tstomsmith-arch/cosy-watch-octopus-heat-pump-widge)
-
-![GitHub License] (https://img.shields.io/github/license/tstomsmith-arch/cosy-watch-octopus-heat-pump-widget)
+![GitHub Stars](https://img.shields.io/github/stars/tstomsmith-arch/cosy-watch-octopus-heat-pump-widget)
 
 An iPhone Scriptable widget for Octopus Cosy heat pumps.
 
