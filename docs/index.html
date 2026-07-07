@@ -104,7 +104,7 @@
       background: rgba(255,255,255,.08);
     }
 
-    .hero-image-card {
+    .-image-card {
       background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.05));
       border: 1px solid var(--border);
       border-radius: 34px;
@@ -246,13 +246,17 @@
         </div>
       </div>
 
-      <div class="hero-image-card" aria-label="Cosy Watch widget screenshot">
-        assets/hero-standby.jpeg
+<div class="hero-image-card" aria-label="Cosy Watch widget screenshot">
+  <img
+    class="hero-screenshot"
+    src="assets/hero-standby.jpeg"
+    alt="Cosy Watch widget showing Octopus Cosy heat pump standby status, hot water temperature, energy use and pod temperatures"
+  >
 
-        <div class="caption">
-          Actual Cosy Watch medium widget shown on iPhone.
-        </div>
-      </div>
+  <div class="caption">
+    Actual Cosy Watch medium widget shown on iPhone.
+  </div>
+</div>
     </div>
   </header>
 
@@ -295,9 +299,46 @@
       </div>
     </section>
 
-    <section>
-      <div class="wrap">
-        <h2>Widget screenshots</h2>
+<section>
+  <div class="wrap">
+    <h2>Widget screenshots</h2>
+
+    <div class="grid">
+      <div class="card">
+        <img
+          class="gallery-screenshot"
+          src="assets/fault-state.jpeg"
+          alt="Cosy Watch widget showing fault detection state"
+        >
+
+        <h3>Fault detection</h3>
+        <p>Highlights the fault state clearly and displays the fault code where available.</p>
+      </div>
+
+      <div class="card">
+        <img
+          class="gallery-screenshot"
+          src="assets/water-heating.jpeg"
+          alt="Cosy Watch widget showing water heating active"
+        >
+
+        <h3>Water heating</h3>
+        <p>Shows when hot water is actively heating, alongside live heat pump performance data.</p>
+      </div>
+
+      <div class="card">
+        <img
+          class="gallery-screenshot"
+          src="assets/heating-active.jpeg"
+          alt="Cosy Watch widget showing heating active"
+        >
+
+        <h3>Heating active</h3>
+        <p>Shows when heating is active, with room temperatures, temperature range and humidity data.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
         <div class="grid">
           <div class="card">
