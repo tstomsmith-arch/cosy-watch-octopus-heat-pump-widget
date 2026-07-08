@@ -17,7 +17,7 @@
   <script data-goatcounter="https://cosy-watch.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
    
-  <style>
+<style>
     :root {
       --bg1: #10002e;
       --bg2: #22084f;
@@ -32,7 +32,9 @@
       --border: rgba(255,255,255,.25);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -42,14 +44,18 @@
       line-height: 1.55;
     }
 
-    a { color: inherit; }
+    a {
+      color: inherit;
+    }
 
     .wrap {
       width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
     }
 
-    header { padding: 72px 0 44px; }
+    header {
+      padding: 72px 0 44px;
+    }
 
     .hero {
       display: grid;
@@ -103,8 +109,7 @@
       background: rgba(255,255,255,.08);
     }
 
-    /* FIXED CLASS NAME */
-    .hero-image-card {
+    .-image-card {
       background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.05));
       border: 1px solid var(--border);
       border-radius: 34px;
@@ -134,7 +139,9 @@
       text-align: center;
     }
 
-    section { padding: 44px 0; }
+    section {
+      padding: 44px 0;
+    }
 
     h2 {
       font-size: clamp(28px, 4vw, 44px);
@@ -154,9 +161,14 @@
       padding: 22px;
     }
 
-    .card h3 { margin-top: 0; }
+    .card h3 {
+      margin-top: 0;
+    }
 
-    .card p, li { color: var(--muted); }
+    .card p,
+    li {
+      color: var(--muted);
+    }
 
     .steps {
       counter-reset: step;
@@ -202,10 +214,197 @@
     }
 
     @media (max-width: 850px) {
-      header { padding-top: 42px; }
-      .hero, .grid { grid-template-columns: 1fr; }
+      header {
+        padding-top: 42px;
+      }
+
+      .hero,
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Unofficial Scriptable widget</div>
+
+        <h1>Cosy Watch for Octopus Cosy heat pumps</h1>
+
+        <p class="lead">
+          Monitor your Octopus Cosy heat pump at a glance. See live status,
+          hot water temperature, COP, energy use, pod temperatures, humidity
+          and fault alerts directly from your iPhone Home Screen.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/tstomsmith-arch/cosy-watch-octopus-heat-pump-widget/blob/main/src/cosy-watch.js">
+            View script
+          </a>
+
+          <a class="btn secondary" href="https://github.com/tstomsmith-arch/cosy-watch-octopus-heat-pump-widget#readme">
+            Read setup guide
+          </a>
+        </div>
+      </div>
+
+<div class="hero-image-card" aria-label="Cosy Watch widget screenshot">
+  <img
+    class="hero-screenshot"
+    src="assets/hero-standby.jpeg"
+    alt="Cosy Watch widget showing Octopus Cosy heat pump standby status, hot water temperature, energy use and pod temperatures"
+  >
+
+  <div class="caption">
+    Actual Cosy Watch medium widget shown on iPhone.
+  </div>
+</div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>What it shows</h2>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Pump status</h3>
+            <p>Quickly see whether the heat pump is standby, running, heating water, offline or reporting a fault.</p>
+          </div>
+
+          <div class="card">
+            <h3>Hot water</h3>
+            <p>See current hot water cylinder temperature and water mode where data is available.</p>
+          </div>
+
+          <div class="card">
+            <h3>Cosy Pods</h3>
+            <p>Shows pod temperatures, average room temperature, temperature range and average humidity.</p>
+          </div>
+
+          <div class="card">
+            <h3>Performance</h3>
+            <p>Displays power, heat output, COP and energy use where the Octopus API returns those values.</p>
+          </div>
+
+          <div class="card">
+            <h3>Energy use</h3>
+            <p>Shows today’s and yesterday’s energy use, including COP values where available.</p>
+          </div>
+
+          <div class="card">
+            <h3>Fault alerts</h3>
+            <p>Faults are highlighted in amber so they stand out from normal running states.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section>
+  <div class="wrap">
+    <h2>Widget screenshots</h2>
+
+    <div class="grid">
+      <div class="card">
+        <img
+          class="gallery-screenshot"
+          src="assets/fault-state.jpeg"
+          alt="Cosy Watch widget showing fault detection state"
+        >
+
+        <h3>Fault detection</h3>
+        <p>Highlights the fault state clearly and displays the fault code where available.</p>
+      </div>
+
+      <div class="card">
+        <img
+          class="gallery-screenshot"
+          src="assets/water-heating.jpeg"
+          alt="Cosy Watch widget showing water heating active"
+        >
+
+        <h3>Water heating</h3>
+        <p>Shows when hot water is actively heating, alongside live heat pump performance data.</p>
+      </div>
+
+      <div class="card">
+        <img
+          class="gallery-screenshot"
+          src="assets/heating-active.jpeg"
+          alt="Cosy Watch widget showing heating active"
+        >
+
+        <h3>Heating active</h3>
+        <p>Shows when heating is active, with room temperatures, temperature range and humidity data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Install guide</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div>
+              <strong>Install Scriptable</strong><br>
+              Download Scriptable from the App Store on your iPhone.
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <strong>Get your Octopus API key</strong><br>
+              Copy your API key from your Octopus account. Keep it private.
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <strong>Create a script</strong><br>
+              Paste the Cosy Watch script into a new Scriptable script.
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <strong>Add your API key</strong><br>
+              Replace the placeholder API key with your own key on your device.
+            </div>
+          </div>
+
+          <div class="step">
+            <div>
+              <strong>Add the widget</strong><br>
+              Add a medium Scriptable widget to your Home Screen and choose the saved script.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="notice">
+          <strong>Security note:</strong> never share your Octopus API key and never upload a copy of the script with your real key included.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Cosy Watch is an unofficial community project and is not affiliated with or endorsed by Octopus Energy.
+    </div>
+  </footer>
+</body>
+</html>
